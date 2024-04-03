@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number System Converter</title>
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .converter {
+        background-color: #fff;
+        color: #000;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        width: 400px;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+        color: #000;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #000;
+    }
+    
+    input[type=text] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000;
+    }
+    
+    button {
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #333;
+    }
+</style>
+</head>
+<body>
+<div class="converter">
+    <h1>Number System Converter</h1>
+    
+    <div class="form-group">
+        <label for="hexadecimal">Hexadecimal</label>
+        <input type="text" id="hexadecimal" name="hexadecimal" placeholder="Enter Hexadecimal Number" oninput="convertFromHexadecimal(this.value)">
+    </div>
+    
+    <div class="form-group">
+        <label for="decimal">Decimal</label>
+        <input type="text" id="decimal" name="decimal" placeholder="Enter Decimal Number" oninput="convertFromDecimal(this.value)">
+    </div>
+    
+    <div class="form-group">
+        <label for="octal">Octal</label>
+        <input type="text" id="octal" name="octal" placeholder="Enter Octal Number" oninput="convertFromOctal(this.value)">
+    </div>
+
+    <div class="form-group">
+        <label for="binary">Binary</label>
+        <input type="text" id="binary" name="binary" placeholder="Enter Binary Number" oninput="convertFromBinary(this.value)">
+    </div>
+    
+    <button type="button" onclick="clearInputs()">Clear</button>
+</div>
+
+<script>
+    function clearInputs() {
+        document.getElementById("hexadecimal").value = "";
+        document.getElementById("decimal").value = "";
+        document.getElementById("octal").value = "";
+        document.getElementById("binary").value = "";
+    }
+    
+    function convertFromBinary(binary) {
+        var decimal = parseInt(binary, 2);
+        document.getElementById("decimal").value = isNaN(decimal) ? "" : decimal;
+        document.getElementById("octal").value = isNaN(decimal) ? "" : decimal.toString(8);
+        document.getElementById("hexadecimal").value = isNaN(decimal) ? "" : decimal.toString(16).toUpperCase();
+    }
+    
+    function convertFromOctal(octal) {
+        var decimal = parseInt(octal, 8);
+        document.getElementById("decimal").value = isNaN(decimal) ? "" : decimal;
+        document.getElementById("binary").value = isNaN(decimal) ? "" : decimal.toString(2);
+        document.getElementById("hexadecimal").value = isNaN(decimal) ? "" : decimal.toString(16).toUpperCase();
+    }
+    
+    function convertFromDecimal(decimal) {
+        decimal = parseInt(decimal);
+        document.getElementById("binary").value = isNaN(decimal) ? "" : decimal.toString(2);
+        document.getElementById("octal").value = isNaN(decimal) ? "" : decimal.toString(8);
+        document.getElementById("hexadecimal").value = isNaN(decimal) ? "" : decimal.toString(16).toUpperCase();
+    }
+    
+    function convertFromHexadecimal(hexadecimal) {
+        var decimal = parseInt(hexadecimal, 16);
+        document.getElementById("decimal").value = isNaN(decimal) ? "" : decimal;
+        document.getElementById("binary").value = isNaN(decimal) ? "" : decimal.toString(2);
+        document.getElementById("octal").value = isNaN(decimal) ? "" : decimal.toString(8);
+    }
+</script>
+</body>
+</html>
+
+
+
