@@ -120,7 +120,9 @@
     
     function convertFromDecimal(decimal) {
         decimal = parseInt(decimal);
-        document.getElementById("binary").value = isNaN(decimal) ? "" : decimal.toString(2);
+        var binary = isNaN(decimal) ? "" : decimal.toString(2);
+        binary = binary.replace(/(\d{4})/g, '$1 ').trim(); // Add space every 4 characters
+        document.getElementById("binary").value = binary;
         document.getElementById("octal").value = isNaN(decimal) ? "" : decimal.toString(8);
         document.getElementById("hexadecimal").value = isNaN(decimal) ? "" : decimal.toString(16).toUpperCase();
     }
@@ -134,6 +136,7 @@
 </script>
 </body>
 </html>
+
 
 
 
